@@ -157,6 +157,154 @@ document.querySelectorAll('.product').forEach(p=>{
 p.style.display=p.dataset.name.toLowerCase().includes(q)?'block':'none';
 });
 }
+  
+<script>
+(function () {
+  const app = document.createElement('section');
+  app.id = 'antica-market';
+  app.innerHTML = `
+    <style>
+      #antica-market {
+        font-family: Arial, sans-serif;
+        direction: rtl;
+        padding: 18px;
+        margin: 16px 0;
+        background: #f4f5f7;
+        color: #222;
+        border-radius: 14px;
+      }
+      #antica-market input,
+      #antica-market textarea,
+      #antica-market button {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 12px;
+        margin: 6px 0;
+        border-radius: 8px;
+        font-size: 16px;
+      }
+      #antica-market input,
+      #antica-market textarea {
+        border: 1px solid #ccc;
+        background: white;
+      }
+      #antica-market button {
+        border: 0;
+        background: #176b48;
+        color: white;
+        font-weight: bold;
+      }
+      #antica-market .item {
+        background: white;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 10px;
+        overflow-wrap: anywhere;
+      }
+    </style>
+
+    <h2>Antica TN 🇹🇳</h2>
+    <p>سوق تونسي للبيع والشراء</p>
+
+    <h3>🔎 ابحث عن سلعة</h3>
+    <input id="at-search" placeholder="اكتب اسم السلعة">
+
+    <h3>➕ أضف إعلانك</h3>
+    <input id="at-name" placeholder="اسم السلعة">
+    <input id="at-price" type="number" min="0"
+      step="0.001" placeholder="السعر بالدينار التونسي">
+    <textarea id="at-desc"
+      placeholder="وصف السلعة وحالتها"></textarea>
+    <button id="at-add">نشر الإعلان</button>
+
+    <h3>🛍️ الإعلانات</h3>
+    <div id="at-list"></div>
+  `;
+
+  document.body.appendChild(app);
+
+  const key = 'antica_demo_products';
+  let products = [];
+
+  try {
+    products = JSON.parse(localStorage.getItem(key) || '[]');
+    if (!Array.isArray(products)) products = [];
+  } catch (e) {
+    products = [];
+  }
+
+  const name = document.getElementById('at-name');
+  const price = document.getElementById('at-price');
+  const desc = document.getElementById('at-desc');
+  const search = document.getElementById('at-search');
+  const list = document.getElementById('at-list');
+
+  function render() {
+    list.replaceChildren();
+    const q = search.value.trim().toLowerCase();
+    const matches = products.filter(p =>
+      (p.name + ' ' + p.desc).toLowerCase().includes(q)
+    );
+
+    if (!matches.length) {
+      list.textContent = 'لا توجد إعلانات مطابقة حتى الآن.';
+      return;
+    }
+
+    matches.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'item';
+
+      const title = document.createElement('strong');
+      title.textContent = p.name;
+
+      const amount = document.createElement('p');
+      amount.textContent = p.price + ' دينار تونسي';
+
+      const description = document.createElement('p');
+      description.textContent = p.desc || 'لا يوجد وصف';
+
+      card.append(title, amount, description);
+      list.appendChild(card);
+    });
+  }
+
+  document.getElementById('at-add').onclick = function () {
+    const n = name.value.trim();
+    const p = Number(price.value);
+
+    if (!n || price.value === '' || !Number.isFinite(p) || p < 0) {
+      alert('اكتب اسم السلعة وسعرًا صحيحًا.');
+      return;
+    }
+
+    products.unshift({
+      name: n,
+      price: p,
+      desc: desc.value.trim()
+    });
+
+    try {
+      localStorage.setItem(key, JSON.stringify(products));
+    } catch (e) {
+      products.shift();
+      alert('تعذر الحفظ على هذا الجهاز.');
+      return;
+    }
+
+    name.value = '';
+    price.value = '';
+    desc.value = '';
+    search.value = '';
+    render();
+    alert('تمت إضافة الإعلان على هذا الجهاز!');
+  };
+
+  search.addEventListener('input', render);
+  render();
+})();
+</script>
+
 </script>
 </body>
 </html>
