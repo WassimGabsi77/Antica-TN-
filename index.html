@@ -1,1 +1,163 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Antica TN | سوق تونس</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f5f9;color:#14294b}
+header{background:white;text-align:center;padding:20px 12px}
+h1{font-size:36px;margin:0}
+h1 span{color:#e8aa00}
+header p{font-weight:bold}
+.search{display:flex;gap:8px;margin-top:15px}
+input{min-width:0;flex:1;padding:13px;border:1px solid #ccd4e1;border-radius:9px;font-size:16px}
+button{border:0;border-radius:9px;background:#f5b900;color:#14294b;font-weight:bold;padding:12px;font-size:15px}
+nav{background:#14294b;color:white;padding:14px;text-align:center}
+.hero{margin:14px;padding:24px 15px;background:#14294b;color:white;text-align:center;border-radius:14px}
+.hero h2{font-size:26px}
+.hero p{line-height:1.8}
+.categories{display:flex;gap:8px;overflow:auto;padding:10px 14px}
+.category{flex-shrink:0;background:white;padding:14px;border-radius:10px;font-weight:bold}
+main{padding:14px}
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.product{background:white;border-radius:12px;padding:12px}
+.photo{height:85px;background:#e9eef7;border-radius:9px;display:grid;place-items:center;font-size:42px}
+.product h3{font-size:16px}
+.price{color:#d92332;font-size:19px;font-weight:bold}
+.sell{margin-top:20px;background:#fff2c9;border-radius:12px;padding:18px;text-align:center}
+footer{margin-top:20px;padding:20px;text-align:center;background:#14294b;color:white;line-height:2}
+</style>
+</head>
+<body>
+<header>
+<h1>Antica <span>TN</span></h1>
+<p>اشري • بيع • بكل ثقة 🇹🇳</p>
+<div class="search">
+<input id="search" placeholder="ابحث عن منتج..." oninput="filterProducts()">
+<button onclick="filterProducts()">بحث</button>
+</div>
+</header>
+<nav>الرئيسية　 |　 الأقسام　 |　 بيع سلعتك</nav>
+<section class="hero">
+<h2>مرحبا بك في Antica TN 🇹🇳</h2>
+<p>منصتك التونسية للبيع والشراء<br>اكتشف المنتجات واعرض سلعتك بسهولة!</p>
+<button onclick="document.getElementById('sell').scrollIntoView({behavior:'smooth'})">اعرض سلعتك الآن</button>
+</section>
+<section class="categories">
+<div class="category">👕 ملابس</div>
+<div class="category">👟 أحذية</div>
+<div class="category">👜 حقائب</div>
+<div class="category">📱 هواتف</div>
+<div class="category">💻 إلكترونيات</div>
+<div class="category">🪑 أثاث</div>
+</section>
+<main>
+<h2>⭐ منتجات مميزة</h2>
+<div class="products" id="products">
+<article class="product" data-name="حذاء رياضي"><div class="photo">👟</div><h3>حذاء رياضي</h3><p class="price">50 د.ت</p><small>📍 تونس</small></article>
+<article class="product" data-name="معطف رجالي"><div class="photo">🧥</div><h3>معطف رجالي</h3><p class="price">45 د.ت</p><small>📍 صفاقس</small></article>
+<article class="product" data-name="حقيبة أنيقة"><div class="photo">👜</div><h3>حقيبة أنيقة</h3><p class="price">35 د.ت</p><small>📍 سوسة</small></article>
+<article class="product" data-name="هاتف مستعمل"><div class="photo">📱</div><h3>هاتف مستعمل</h3><p class="price">250 د.ت</p><small>📍 تونس</small></article>
+</div>
+<section class="sell" id="sell">
+<h2>📸 تريد بيع سلعتك؟</h2>
+<p>قريبًا سنضيف إمكانية نشر الإعلانات الحقيقية والتواصل مع البائعين.</p>
+<button onclick="alert('سيتم تفعيل نشر الإعلانات في المرحلة القادمة')">نشر إعلان</button>
+</section>
+</main>
+<footer>Antica TN 🇹🇳<br>سوق تونسي للبيع والشراء<br>سهولة • ثقة • فرص جديدة</footer>
+<script>
+function filterProducts(){
+const q=document.getElementById('search').value.trim().toLowerCase();
+document.querySelectorAll('.product').forEach(p=>{
+p.style.display=p.dataset.name.toLowerCase().includes(q)?'block':'none';
+});
+}
+</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Antica TN | سوق تونس</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f5f9;color:#14294b}
+header{background:white;text-align:center;padding:20px 12px}
+h1{font-size:36px;margin:0}
+h1 span{color:#e8aa00}
+header p{font-weight:bold}
+.search{display:flex;gap:8px;margin-top:15px}
+input{min-width:0;flex:1;padding:13px;border:1px solid #ccd4e1;border-radius:9px;font-size:16px}
+button{border:0;border-radius:9px;background:#f5b900;color:#14294b;font-weight:bold;padding:12px;font-size:15px}
+nav{background:#14294b;color:white;padding:14px;text-align:center}
+.hero{margin:14px;padding:24px 15px;background:#14294b;color:white;text-align:center;border-radius:14px}
+.hero h2{font-size:26px}
+.hero p{line-height:1.8}
+.categories{display:flex;gap:8px;overflow:auto;padding:10px 14px}
+.category{flex-shrink:0;background:white;padding:14px;border-radius:10px;font-weight:bold}
+main{padding:14px}
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.product{background:white;border-radius:12px;padding:12px}
+.photo{height:85px;background:#e9eef7;border-radius:9px;display:grid;place-items:center;font-size:42px}
+.product h3{font-size:16px}
+.price{color:#d92332;font-size:19px;font-weight:bold}
+.sell{margin-top:20px;background:#fff2c9;border-radius:12px;padding:18px;text-align:center}
+footer{margin-top:20px;padding:20px;text-align:center;background:#14294b;color:white;line-height:2}
+</style>
+</head>
+<body>
+<header>
+<h1>Antica <span>TN</span></h1>
+<p>اشري • بيع • بكل ثقة 🇹🇳</p>
+<div class="search">
+<input id="search" placeholder="ابحث عن منتج..." oninput="filterProducts()">
+<button onclick="filterProducts()">بحث</button>
+</div>
+</header>
+<nav>الرئيسية　 |　 الأقسام　 |　 بيع سلعتك</nav>
+<section class="hero">
+<h2>مرحبا بك في Antica TN 🇹🇳</h2>
+<p>منصتك التونسية للبيع والشراء<br>اكتشف المنتجات واعرض سلعتك بسهولة!</p>
+<button onclick="document.getElementById('sell').scrollIntoView({behavior:'smooth'})">اعرض سلعتك الآن</button>
+</section>
+<section class="categories">
+<div class="category">👕 ملابس</div>
+<div class="category">👟 أحذية</div>
+<div class="category">👜 حقائب</div>
+<div class="category">📱 هواتف</div>
+<div class="category">💻 إلكترونيات</div>
+<div class="category">🪑 أثاث</div>
+</section>
+<main>
+<h2>⭐ منتجات مميزة</h2>
+<div class="products" id="products">
+<article class="product" data-name="حذاء رياضي"><div class="photo">👟</div><h3>حذاء رياضي</h3><p class="price">50 د.ت</p><small>📍 تونس</small></article>
+<article class="product" data-name="معطف رجالي"><div class="photo">🧥</div><h3>معطف رجالي</h3><p class="price">45 د.ت</p><small>📍 صفاقس</small></article>
+<article class="product" data-name="حقيبة أنيقة"><div class="photo">👜</div><h3>حقيبة أنيقة</h3><p class="price">35 د.ت</p><small>📍 سوسة</small></article>
+<article class="product" data-name="هاتف مستعمل"><div class="photo">📱</div><h3>هاتف مستعمل</h3><p class="price">250 د.ت</p><small>📍 تونس</small></article>
+</div>
+<section class="sell" id="sell">
+<h2>📸 تريد بيع سلعتك؟</h2>
+<p>قريبًا سنضيف إمكانية نشر الإعلانات الحقيقية والتواصل مع البائعين.</p>
+<button onclick="alert('سيتم تفعيل نشر الإعلانات في المرحلة القادمة')">نشر إعلان</button>
+</section>
+</main>
+<footer>Antica TN 🇹🇳<br>سوق تونسي للبيع والشراء<br>سهولة • ثقة • فرص جديدة</footer>
+<script>
+function filterProducts(){
+const q=document.getElementById('search').value.trim().toLowerCase();
+document.querySelectorAll('.product').forEach(p=>{
+p.style.display=p.dataset.name.toLowerCase().includes(q)?'block':'none';
+});
+}
+</script>
+</body>
+</html>
+
